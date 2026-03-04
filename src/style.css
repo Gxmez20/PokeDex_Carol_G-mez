@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a1a;
+  background-image: 
+    radial-gradient(ellipse at 20% 50%, rgba(120, 40, 200, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(40, 80, 200, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(80, 20, 150, 0.1) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Ccircle cx='50' cy='80' r='1' fill='white' opacity='0.6'/%3E%3Ccircle cx='120' cy='30' r='0.8' fill='white' opacity='0.4'/%3E%3Ccircle cx='200' cy='120' r='1.2' fill='white' opacity='0.7'/%3E%3Ccircle cx='300' cy='60' r='0.9' fill='white' opacity='0.5'/%3E%3Ccircle cx='350' cy='150' r='1' fill='white' opacity='0.6'/%3E%3Ccircle cx='80' cy='200' r='0.7' fill='white' opacity='0.4'/%3E%3Ccircle cx='160' cy='280' r='1.1' fill='white' opacity='0.5'/%3E%3Ccircle cx='250' cy='220' r='0.8' fill='white' opacity='0.6'/%3E%3Ccircle cx='380' cy='300' r='1' fill='white' opacity='0.4'/%3E%3Ccircle cx='30' cy='350' r='0.9' fill='white' opacity='0.5'/%3E%3Ccircle cx='320' cy='380' r='1.2' fill='white' opacity='0.3'/%3E%3Ccircle cx='180' cy='370' r='0.7' fill='white' opacity='0.6'/%3E%3C/svg%3E");
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  padding: 30px 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #a78bfa, #60a5fa, #f472b6, #a78bfa);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+  filter: drop-shadow(0 0 25px rgba(167, 139, 250, 0.5));
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+.subtitle {
+  text-align: center;
+  color: rgba(167, 139, 250, 0.6);
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+#search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+#search {
+  padding: 13px 28px;
+  border-radius: 30px;
+  border: 2px solid rgba(167, 139, 250, 0.5);
+  background: rgba(167, 139, 250, 0.07);
+  color: white;
+  font-size: 1rem;
+  width: 380px;
+  outline: none;
+  transition: 0.3s;
+  backdrop-filter: blur(10px);
+}
+
+#search::placeholder {
+  color: rgba(167, 139, 250, 0.4);
+}
+
+#search:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 25px rgba(167, 139, 250, 0.35);
+  background: rgba(167, 139, 250, 0.12);
+}
+
+#pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pokemon {
+  background: linear-gradient(145deg, rgba(30, 20, 60, 0.9), rgba(15, 10, 40, 0.95));
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 18px;
+  padding: 20px 14px;
+  text-align: center;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.pokemon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.pokemon:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(167, 139, 250, 0.6);
+  box-shadow: 0 12px 35px rgba(167, 139, 250, 0.2), 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.locked {
+  border-color: rgba(167, 139, 250, 0.08);
+  background: linear-gradient(145deg, rgba(20, 15, 40, 0.8), rgba(10, 8, 25, 0.9));
+}
+
+.locked p {
+  color: rgba(167, 139, 250, 0.3) !important;
+}
+
+.pokemon:not(.locked) {
+  background: linear-gradient(145deg, rgba(60, 30, 100, 0.9), rgba(30, 20, 70, 0.95));
+  border-color: #a78bfa;
+  box-shadow: 
+    0 0 25px rgba(167, 139, 250, 0.3),
+    0 8px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.pokemon img {
+  width: 90px;
+  height: 90px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.7));
+}
+
+.pokemon p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: #c4b5fd;
+  letter-spacing: 0.5px;
+}
+
