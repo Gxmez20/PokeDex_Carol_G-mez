@@ -1,3 +1,4 @@
+/*implementar HttpAdapter y AxiosAdapter con genéricos*/
 import axios from "axios";
 
 export interface HttpAdapter {
