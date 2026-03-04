@@ -1,3 +1,4 @@
+/*crear interfaz PokemonDetail y PokemonSpecies*/ 
 
 export interface PokemonDetail {
   id: number;
